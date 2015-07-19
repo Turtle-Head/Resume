@@ -66,13 +66,13 @@ var projects = {
             "title": "Project 1",
             "dates": "2015",
             "description": "This does something",
-            "images": "images\thumb1.png"
+            "images": "images/thumb 1.png"
         },
         {
             "title": "Project 2",
             "dates": "2015",
             "description": "This does something else",
-            "images": "images\thumb2.png"
+            "images": "images/thumb 2.png"
         }
     ]
 }
@@ -107,12 +107,12 @@ function displayBio(){
 }
 function displayEducation() {
     $("#education").append(HTMLschoolStart);
-    for (x=0; x < education.schools.length; x++) {
-        var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[x].name);
-        var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[x].location);
-        var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[x].major);
-        var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[x].dates);
-        var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[x].degree);
+    for (var d=0; d < education.schools.length; d++) {
+        var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[d].name);
+        var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[d].location);
+        var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[d].major);
+        var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[d].dates);
+        var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[d].degree);
 
         $("#education").append(formattedSchoolName);
         $("#education").append(formattedSchoolDegree);
@@ -123,26 +123,26 @@ function displayEducation() {
 
         }
     $("#education").append(HTMLonlineClasses);
-    for (x=0; x < education.onlineCourses.length; x++) {
-        var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[x].school);
-        var formattedOCTitle = HTMLschoolLocation.replace("%data%", education.onlineCourses[x].title);
-        var formattedOCDate= HTMLschoolDates.replace("%data%", education.onlineCourses[x].date);
-        var formattedOCUrl= HTMLschoolDates.replace("%data%", education.onlineCourses[x].url);
+    for (var c=0; c < education.onlineCourses.length; c++) {
+        var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[c].school);
+        var formattedOCTitle = HTMLschoolLocation.replace("%data%", education.onlineCourses[c].title);
+        var formattedOCDate= HTMLschoolDates.replace("%data%", education.onlineCourses[c].date);
+        var formattedOCUrl= HTMLschoolDates.replace("%data%", education.onlineCourses[c].url);
 
         $("#education").append(formattedOCTitle);
         $("#education").append(formattedOCName);
-        $("#education").append(formattedOCDate);
         $("#education").append(formattedOCUrl);
-    }
+        $("#education").append(formattedOCDate);
+        }
 }
 
 function displayProjects() {
     $("#projects").append(HTMLprojectStart);
-    for (x=0; x < projects.projects.length; x++) {
-        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects.title);
-        var formatterProjectDates = HTMLprojectDates.replace("%data%", projects.projects.dates);
-        var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects.description);
-        var formattedProjectImages = HTMLprojectImage.replace("%data%", projects.projects.images);
+    for (var b=0; b < projects.projects.length; b++) {
+        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[b].title);
+        var formatterProjectDates = HTMLprojectDates.replace("%data%", projects.projects[b].dates);
+        var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[b].description);
+        var formattedProjectImages = HTMLprojectImage.replace("%data%", projects.projects[b].images);
 
         $("#projects").append(formattedProjectTitle);
         $("#projects").append(formatterProjectDates);
@@ -153,12 +153,12 @@ function displayProjects() {
 
 function displayWork() {
     $("#workExperience").append(HTMLworkStart);
-    for (x=0; x < work.jobs.length; x++){
-        var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs.employer);
-        var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs.title);
-        var formattedWorkLocation = HTMLworkEmployer.replace("%data%", work.jobs.location);
-        var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs.dates);
-        var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs.description);
+    for (var a=0; a < work.jobs.length; a++){
+        var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[a].employer);
+        var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[a].title);
+        var formattedWorkLocation = HTMLworkEmployer.replace("%data%", work.jobs[a].location);
+        var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[a].dates);
+        var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[a].description);
 
         $("#workExperience").append(formattedWorkEmployer);
         $("#workExperience").append(formattedWorkTitle);
