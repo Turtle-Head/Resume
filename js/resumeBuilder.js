@@ -51,11 +51,11 @@ var work = {
             "description": "I have offered a wide range of computer services including running a VOIP server for 1 year, network setup, and continuing to maintian client computers always protecting their privacy and ensuring their data is secure."
         },
         {
-            "employer": "x",
-            "title": "x",
-            "location": "y",
-            "dates": "2008-2015",
-            "description": ""
+            "employer": "Someone",
+            "title": "Something",
+            "location": "Calgary, AB",
+            "dates": "2005-2008",
+            "description": "Did some stuff in a place and time far far away."
         }
     ]
 }
