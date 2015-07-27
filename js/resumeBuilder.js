@@ -11,7 +11,34 @@ var bio = {
     },
     "welcomeMessage": "Developing your front end so you don't have to",
     "skills" : [" CSS"," HTML"," JS"," CCNA"],
-    "biopic" : "images/fry.jpg"
+    "biopic" : "images/fry.jpg",
+    display: function (){
+        var formattedName = HTMLheaderName.replace("%data%", bio.name);
+        var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+        var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+        var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+        var formattedLoc = HTMLlocation.replace("%data%", bio.contacts.location);
+        var formattedGit = HTMLgithub.replace("%data%", bio.contacts.github);
+        var formattedTwit = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+        var formattedPict = HTMLbioPic.replace("%data%", bio.biopic);
+        var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+        var formattedSkills = HTMLskills.replace("%data%", bio.skills);
+
+        $("#header").prepend(formattedRole);
+        $("#header").prepend(formattedName);
+        $("#header").prepend(formattedPict);
+        $("#topContacts").append(formattedEmail);
+        $("#topContacts").append(formattedMobile);
+        $("#topContacts").append(formattedGit);
+        $("#lets-connect").append(formattedEmail);
+        $("#lets-connect").append(formattedMobile);
+        $("#lets-connect").append(formattedGit);
+        $("#topContacts").append(formattedTwit);
+        $("#topContacts").append(formattedLoc);
+        $("#header").append(formattedWelcome);
+        $("#header").append(HTMLskillsStart);
+        $("#header").append(formattedSkills);
+    }
 }
 
 var education = {
@@ -38,7 +65,39 @@ var education = {
             "date": "2015",
             "url": "http://www.udacity.com"
         }
-    ]
+    ],
+    display: function (){
+        $("#education").append(HTMLschoolStart);
+        for (var d=0; d < education.schools.length; d++) {
+            var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[d].name);
+            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[d].location);
+            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[d].major);
+            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[d].dates);
+            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[d].degree);
+
+            $("#education").append(formattedSchoolName);
+            $("#education").append(formattedSchoolDegree);
+            $("#education").append(formattedSchoolDates);
+            $("#education").append(formattedSchoolLocation);
+            $("#education").append(formattedSchoolMajor);
+
+
+            }
+        $("#education").append(HTMLonlineClasses);
+        for (var c=0; c < education.onlineCourses.length; c++) {
+            var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[c].school);
+            var formattedOCTitle = HTMLschoolLocation.replace("%data%", education.onlineCourses[c].title);
+            var formattedOCDate= HTMLschoolDates.replace("%data%", education.onlineCourses[c].date);
+            var formattedOCUrl= HTMLschoolDates.replace("%data%", education.onlineCourses[c].url);
+
+            $("#education").append(formattedOCTitle);
+            $("#education").append(formattedOCName);
+            $("#education").append(formattedOCUrl);
+            $("#education").append("<br>")
+            $("#education").append(formattedOCDate);
+            $("#education").append("<br>")
+            }
+    }
 }
 
 var work = {
@@ -57,7 +116,23 @@ var work = {
             "dates": "2005-2008",
             "description": "Did some stuff in a place and time far far away."
         }
-    ]
+    ],
+    display: function (){
+        $("#workExperience").append(HTMLworkStart);
+        for (var a=0; a < work.jobs.length; a++){
+            var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[a].employer);
+            var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[a].title);
+            var formattedWorkLocation = HTMLworkEmployer.replace("%data%", work.jobs[a].location);
+            var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[a].dates);
+            var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[a].description);
+
+            $("#workExperience").append(formattedWorkEmployer);
+            $("#workExperience").append(formattedWorkTitle);
+            $("#workExperience").append(formattedWorkLocation);
+            $("#workExperience").append(formattedWorkDates);
+            $("#workExperience").append(formattedWorkDescription);
+        }
+    }
 }
 
 var projects = {
@@ -74,104 +149,29 @@ var projects = {
             "description": "This does something else",
             "images": "images/thumb 2.png"
         }
-    ]
-}
+    ],
+    display: function (){
+        $("#projects").append(HTMLprojectStart);
+        for (var b=0; b < projects.projects.length; b++) {
+            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[b].title);
+            var formatterProjectDates = HTMLprojectDates.replace("%data%", projects.projects[b].dates);
+            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[b].description);
+            var formattedProjectImages = HTMLprojectImage.replace("%data%", projects.projects[b].images);
 
-//Functions
-function displayBio(){
-    var formattedName = HTMLheaderName.replace("%data%", bio.name);
-    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-    var formattedLoc = HTMLlocation.replace("%data%", bio.contacts.location);
-    var formattedGit = HTMLgithub.replace("%data%", bio.contacts.github);
-    var formattedTwit = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-    var formattedPict = HTMLbioPic.replace("%data%", bio.biopic);
-    var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-    var formattedSkills = HTMLskills.replace("%data%", bio.skills);
-
-    $("#header").prepend(formattedRole);
-    $("#header").prepend(formattedName);
-    $("#header").prepend(formattedPict);
-    $("#topContacts").append(formattedEmail);
-    $("#topContacts").append(formattedMobile);
-    $("#topContacts").append(formattedGit);
-    $("#lets-connect").append(formattedEmail);
-    $("#lets-connect").append(formattedMobile);
-    $("#lets-connect").append(formattedGit);
-    $("#topContacts").append(formattedTwit);
-    $("#topContacts").append(formattedLoc);
-    $("#header").append(formattedSkills);
-    $("#header").append(formattedWelcome);
-
-}
-function displayEducation() {
-    $("#education").append(HTMLschoolStart);
-    for (var d=0; d < education.schools.length; d++) {
-        var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[d].name);
-        var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[d].location);
-        var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[d].major);
-        var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[d].dates);
-        var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[d].degree);
-
-        $("#education").append(formattedSchoolName);
-        $("#education").append(formattedSchoolDegree);
-        $("#education").append(formattedSchoolDates);
-        $("#education").append(formattedSchoolLocation);
-        $("#education").append(formattedSchoolMajor);
-
-
+            $("#projects").append(formattedProjectTitle);
+            $("#projects").append(formatterProjectDates);
+            $("#projects").append(formattedProjectDescription);
+            $("#projects").append(formattedProjectImages);
         }
-    $("#education").append(HTMLonlineClasses);
-    for (var c=0; c < education.onlineCourses.length; c++) {
-        var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[c].school);
-        var formattedOCTitle = HTMLschoolLocation.replace("%data%", education.onlineCourses[c].title);
-        var formattedOCDate= HTMLschoolDates.replace("%data%", education.onlineCourses[c].date);
-        var formattedOCUrl= HTMLschoolDates.replace("%data%", education.onlineCourses[c].url);
-
-        $("#education").append(formattedOCTitle);
-        $("#education").append(formattedOCName);
-        $("#education").append(formattedOCUrl);
-        $("#education").append(formattedOCDate);
-        }
-}
-
-function displayProjects() {
-    $("#projects").append(HTMLprojectStart);
-    for (var b=0; b < projects.projects.length; b++) {
-        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[b].title);
-        var formatterProjectDates = HTMLprojectDates.replace("%data%", projects.projects[b].dates);
-        var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[b].description);
-        var formattedProjectImages = HTMLprojectImage.replace("%data%", projects.projects[b].images);
-
-        $("#projects").append(formattedProjectTitle);
-        $("#projects").append(formatterProjectDates);
-        $("#projects").append(formattedProjectDescription);
-        $("#projects").append(formattedProjectImages);
     }
 }
 
-function displayWork() {
-    $("#workExperience").append(HTMLworkStart);
-    for (var a=0; a < work.jobs.length; a++){
-        var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[a].employer);
-        var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[a].title);
-        var formattedWorkLocation = HTMLworkEmployer.replace("%data%", work.jobs[a].location);
-        var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[a].dates);
-        var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[a].description);
 
-        $("#workExperience").append(formattedWorkEmployer);
-        $("#workExperience").append(formattedWorkTitle);
-        $("#workExperience").append(formattedWorkLocation);
-        $("#workExperience").append(formattedWorkDates);
-        $("#workExperience").append(formattedWorkDescription);
-    }
-}
 //Function Calls
-displayBio();
-displayWork();
-displayProjects();
-displayEducation();
+bio.display();
+work.display();
+projects.display();
+education.display();
 
 
-console.log(education);
+//console.log();
