@@ -1,4 +1,4 @@
-//ARRAYS
+//JSON Objects
 var bio = {
     "name" : "James Fehr",
     "role" : "Front End Developer",
@@ -9,7 +9,7 @@ var bio = {
         "twitter" : "@StarkWarrior",
         "location" : "Roseisle, MB"
     },
-    "welcomeMessage": "Developing your front end so you don't have to",
+    "welcomeMessage": "ipsum lorem describum etceterum",
     "skills" : [" CSS"," HTML"," JS"," CCNA"],
     "biopic" : "images/fry.jpg",
     display: function (){
@@ -22,22 +22,20 @@ var bio = {
         var formattedTwit = HTMLtwitter.replace("%data%", bio.contacts.twitter);
         var formattedPict = HTMLbioPic.replace("%data%", bio.biopic);
         var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-        var formattedSkills = HTMLskills.replace("%data%", bio.skills);
+
 
         $("#header").prepend(formattedRole);
         $("#header").prepend(formattedName);
         $("#header").prepend(formattedPict);
-        $("#topContacts").append(formattedEmail);
-        $("#topContacts").append(formattedMobile);
-        $("#topContacts").append(formattedGit);
-        $("#lets-connect").append(formattedEmail);
-        $("#lets-connect").append(formattedMobile);
-        $("#lets-connect").append(formattedGit);
-        $("#topContacts").append(formattedTwit);
-        $("#topContacts").append(formattedLoc);
+        $("#topContacts").append(formattedEmail, formattedGit, formattedTwit, formattedLoc);
+        $("#footerContacts").append(formattedEmail, formattedGit, formattedTwit, formattedLoc);
         $("#header").append(formattedWelcome);
         $("#header").append(HTMLskillsStart);
-        $("#header").append(formattedSkills);
+        for (var e=0; e < bio.skills.length; e++){
+            var formattedSkills = HTMLskills.replace("%data%", bio.skills[e]);
+            $("#header").append(formattedSkills);
+        }
+        $("#map-div").append(googleMap);
     }
 }
 
@@ -62,8 +60,14 @@ var education = {
         {
             "title" : "Front End Nano Degree",
             "school" : "Udacity",
-            "date": "2015",
-            "url": "http://www.udacity.com"
+            "date" : "2015",
+            "url" : "http://www.udacity.com"
+        },
+        {
+            "title" : "Cisco Certified Network Associate",
+            "school" : "Penticton Sr. Secondary",
+            "date" : "1999",
+            "url" : "http://www.cisco.com/"
         }
     ],
     display: function (){
@@ -76,12 +80,12 @@ var education = {
             var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[d].degree);
 
             $("#education").append(formattedSchoolName);
-            $("#education").append(formattedSchoolDegree);
-            $("#education").append(formattedSchoolDates);
+            //$("#education").append(formattedSchoolDegree);
             $("#education").append(formattedSchoolLocation);
             $("#education").append(formattedSchoolMajor);
-
-
+            $("#education").append("<br>");
+            $("#education").append(formattedSchoolDates);
+            $("#education").append("<br>");
             }
         $("#education").append(HTMLonlineClasses);
         for (var c=0; c < education.onlineCourses.length; c++) {
@@ -93,9 +97,9 @@ var education = {
             $("#education").append(formattedOCTitle);
             $("#education").append(formattedOCName);
             $("#education").append(formattedOCUrl);
-            $("#education").append("<br>")
+            $("#education").append("<br>");
             $("#education").append(formattedOCDate);
-            $("#education").append("<br>")
+            $("#education").append("<br>");
             }
     }
 }
@@ -107,7 +111,7 @@ var work = {
             "title": "Consultant",
             "location": "Roseisle, MB",
             "dates": "2008-2015",
-            "description": "I have offered a wide range of computer services including running a VOIP server for 1 year, network setup, and continuing to maintian client computers always protecting their privacy and ensuring their data is secure."
+            "description": "I have offered a wide range of computer services including running a VOIP server, network setup, and continuing to maintian client computers always protecting their privacy and ensuring their data is secure."
         },
         {
             "employer": "Someone",
