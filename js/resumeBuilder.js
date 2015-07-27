@@ -107,7 +107,7 @@ var education = {
 var work = {
     "jobs": [
         {
-            "employer": "James Fehr",
+            "employer": "Self Employed",
             "title": "Consultant",
             "location": "Roseisle, MB",
             "dates": "2008-2015",
