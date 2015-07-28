@@ -1,17 +1,17 @@
 //JSON Objects
 var bio = {
     "name" : "James Fehr",
-    "role" : "Front End Developer",
+    "role" : "Front End Developer // Consultant // Troubleshooter",
     "contacts" : {
-        "mobile" : "651-651-6549",
+        "mobile" : "204-828-3613",
         "email": "fehr.james@gmail.com",
         "github" : "Turtle-Head",
         "twitter" : "@StarkWarrior",
         "location" : "Roseisle, MB"
     },
-    "welcomeMessage": "Thank you for taking the time to check out my resume.  I believe that delivering content to the consumer is your prime concern, please let me help you do just that.",
+    "welcomeMessage": "Thank you for taking the time to check out my resume.",
     "skills" : ["CSS","HTML","JS","CCNA"],
-    "biopic" : "images/fry.jpg",
+    "biopic" : "images/jfheadshot.jpg",
     display: function (){
         var formattedName = HTMLheaderName.replace("%data%", bio.name);
         var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -28,8 +28,8 @@ var bio = {
         $("#header").prepend(formattedName);
 
         $("#header").append(formattedPict);
-        $("#topContacts").append(formattedEmail, formattedGit, formattedTwit, formattedLoc);
-        $("#footerContacts").append(formattedEmail, formattedGit, formattedTwit, formattedLoc);
+        $("#topContacts").append(formattedMobile, formattedEmail, formattedGit, formattedTwit, formattedLoc);
+        $("#footerContacts").append(formattedMobile, formattedEmail, formattedGit, formattedTwit, formattedLoc);
         $("#header").append(formattedWelcome);
         $("#header").append(HTMLskillsStart);
         for (var e=0; e < bio.skills.length; e++){
@@ -53,8 +53,8 @@ var education = {
     {
         "name": "Penticton Sr. Secondary",
         "location": "Penticton, BC",
-        "degree": "High School Diploma",
-        "major": "English, Computer Science",
+        "degree": "Diploma, CCNA",
+        "major": "English, CS, Networking",
         "dates": "1996-1999"
     }
     ],
@@ -113,13 +113,6 @@ var work = {
             "location": "Roseisle, MB",
             "dates": "2008-2015",
             "description": "Continuing to offer a wide range of computer services including VOIP servers, network setup, Virus, Malware and Rootkit removal as well as custom Web Sites and Computers."
-        },
-        {
-            "employer": "Someone",
-            "title": "Something",
-            "location": "Calgary, AB",
-            "dates": "2005-2008",
-            "description": "Did some stuff in a place and time far far away."
         }
     ],
     display: function (){
@@ -171,13 +164,14 @@ var projects = {
     }
 }
 //Functions
-/*function locationizer(work_obj) {
+function locationizer(work_obj) {
     var locations = [];
     for (var job in work_obj.jobs) {
       locations.push(work_obj.jobs[job].location);
   }
     return locations;
-}*/
+}
+
 function inName() {
     var nameSplit = bio.name.split(" ");
     nameSplit[nameSplit.length-1]=nameSplit[nameSplit.length-1].toUpperCase();
@@ -194,6 +188,4 @@ bio.display();
 work.display();
 projects.display();
 education.display();
-
-
 //console.log();
