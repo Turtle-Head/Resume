@@ -9,8 +9,8 @@ var bio = {
         "twitter" : "@StarkWarrior",
         "location" : "Roseisle, MB"
     },
-    "welcomeMessage": "ipsum lorem describum etceterum",
-    "skills" : [" CSS"," HTML"," JS"," CCNA"],
+    "welcomeMessage": "Thank you for taking the time to check out my resume.  I believe that delivering content to the consumer is your prime concern, please let me help you do just that.",
+    "skills" : ["CSS","HTML","JS","CCNA"],
     "biopic" : "images/fry.jpg",
     display: function (){
         var formattedName = HTMLheaderName.replace("%data%", bio.name);
@@ -23,10 +23,11 @@ var bio = {
         var formattedPict = HTMLbioPic.replace("%data%", bio.biopic);
         var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
-
+        $("#header").prepend(internationalizeButton);
         $("#header").prepend(formattedRole);
         $("#header").prepend(formattedName);
-        $("#header").prepend(formattedPict);
+
+        $("#header").append(formattedPict);
         $("#topContacts").append(formattedEmail, formattedGit, formattedTwit, formattedLoc);
         $("#footerContacts").append(formattedEmail, formattedGit, formattedTwit, formattedLoc);
         $("#header").append(formattedWelcome);
@@ -36,6 +37,7 @@ var bio = {
             $("#header").append(formattedSkills);
         }
         $("#map-div").append(googleMap);
+
     }
 }
 
@@ -80,7 +82,7 @@ var education = {
             var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[d].degree);
 
             $("#education").append(formattedSchoolName);
-            //$("#education").append(formattedSchoolDegree);
+            $("#education").append(formattedSchoolDegree);
             $("#education").append(formattedSchoolLocation);
             $("#education").append(formattedSchoolMajor);
             $("#education").append("<br>");
@@ -92,12 +94,11 @@ var education = {
             var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[c].school);
             var formattedOCTitle = HTMLschoolLocation.replace("%data%", education.onlineCourses[c].title);
             var formattedOCDate= HTMLschoolDates.replace("%data%", education.onlineCourses[c].date);
-            var formattedOCUrl= HTMLschoolDates.replace("%data%", education.onlineCourses[c].url);
+            var formattedOCUrl= HTMLonlineURL.replace("%data%", education.onlineCourses[c].url);
 
             $("#education").append(formattedOCTitle);
             $("#education").append(formattedOCName);
             $("#education").append(formattedOCUrl);
-            $("#education").append("<br>");
             $("#education").append(formattedOCDate);
             $("#education").append("<br>");
             }
@@ -111,7 +112,7 @@ var work = {
             "title": "Consultant",
             "location": "Roseisle, MB",
             "dates": "2008-2015",
-            "description": "I have offered a wide range of computer services including running a VOIP server, network setup, and continuing to maintian client computers always protecting their privacy and ensuring their data is secure."
+            "description": "Continuing to offer a wide range of computer services including VOIP servers, network setup, Virus, Malware and Rootkit removal as well as custom Web Sites and Computers."
         },
         {
             "employer": "Someone",
@@ -169,7 +170,24 @@ var projects = {
         }
     }
 }
-
+//Functions
+/*function locationizer(work_obj) {
+    var locations = [];
+    for (var job in work_obj.jobs) {
+      locations.push(work_obj.jobs[job].location);
+  }
+    return locations;
+}*/
+function inName() {
+    var nameSplit = bio.name.split(" ");
+    nameSplit[nameSplit.length-1]=nameSplit[nameSplit.length-1].toUpperCase();
+    var intName=nameSplit[0];
+    for (var x=1; x < nameSplit.length; x++){
+        intName+=" "+nameSplit[x];
+    }
+    console.log(intName);
+    return intName;
+}
 
 //Function Calls
 bio.display();

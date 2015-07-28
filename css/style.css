@@ -212,3 +212,15 @@ span {
     display: block;
   }
 }
+
+#inTb {
+    background-color: #0000CD;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    border:none;
+}
