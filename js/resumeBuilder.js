@@ -75,32 +75,34 @@ var education = {
     display: function (){
         $("#education").append(HTMLschoolStart);
         for (var d=0; d < education.schools.length; d++) {
+            //format stuff
             var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[d].name);
             var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[d].location);
             var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[d].major);
             var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[d].dates);
             var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[d].degree);
-
-            $("#education").append(formattedSchoolName);
-            $("#education").append(formattedSchoolDegree);
-            $("#education").append(formattedSchoolLocation);
-            $("#education").append(formattedSchoolMajor);
-            $("#education").append("<br>");
-            $("#education").append(formattedSchoolDates);
-            $("#education").append("<br>");
+            //append stuff
+            $(".education-entry:last").append(formattedSchoolName);
+            $(".education-entry:last").append(formattedSchoolDegree);
+            $(".education-entry:last").append(formattedSchoolLocation);
+            $(".education-entry:last").append(formattedSchoolMajor);
+            $(".education-entry:last").append("<br>");
+            $(".education-entry:last").append(formattedSchoolDates);
+            $(".education-entry:last").append("<br>");
             }
-        $("#education").append(HTMLonlineClasses);
+        $(".education-entry:last").append(HTMLonlineClasses);
         for (var c=0; c < education.onlineCourses.length; c++) {
+            //format stuff
             var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[c].school);
             var formattedOCTitle = HTMLschoolLocation.replace("%data%", education.onlineCourses[c].title);
             var formattedOCDate= HTMLschoolDates.replace("%data%", education.onlineCourses[c].date);
             var formattedOCUrl= HTMLonlineURL.replace("%data%", education.onlineCourses[c].url);
-
-            $("#education").append(formattedOCTitle);
-            $("#education").append(formattedOCName);
-            $("#education").append(formattedOCUrl);
-            $("#education").append(formattedOCDate);
-            $("#education").append("<br>");
+            //append stuff
+            $(".education-entry:last").append(formattedOCTitle);
+            $(".education-entry:last").append(formattedOCName);
+            $(".education-entry:last").append(formattedOCUrl);
+            $(".education-entry:last").append(formattedOCDate);
+            $(".education-entry:last").append("<br>");
             }
     }
 }
@@ -124,11 +126,11 @@ var work = {
             var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[a].dates);
             var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[a].description);
 
-            $("#workExperience").append(formattedWorkEmployer);
-            $("#workExperience").append(formattedWorkTitle);
-            $("#workExperience").append(formattedWorkLocation);
-            $("#workExperience").append(formattedWorkDates);
-            $("#workExperience").append(formattedWorkDescription);
+            $(".work-entry:last").append(formattedWorkEmployer);
+            $(".work-entry:last").append(formattedWorkTitle);
+            $(".work-entry:last").append(formattedWorkLocation);
+            $(".work-entry:last").append(formattedWorkDates);
+            $(".work-entry:last").append(formattedWorkDescription);
         }
     }
 }
@@ -156,10 +158,10 @@ var projects = {
             var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[b].description);
             var formattedProjectImages = HTMLprojectImage.replace("%data%", projects.projects[b].images);
 
-            $("#projects").append(formattedProjectTitle);
-            $("#projects").append(formatterProjectDates);
-            $("#projects").append(formattedProjectDescription);
-            $("#projects").append(formattedProjectImages);
+            $(".project-entry:last").append(formattedProjectTitle);
+            $(".project-entry:last").append(formatterProjectDates);
+            $(".project-entry:last").append(formattedProjectDescription);
+            $(".project-entry:last").append(formattedProjectImages);
         }
     }
 }
