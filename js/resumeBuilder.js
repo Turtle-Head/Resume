@@ -36,7 +36,7 @@ var bio = {
             var formattedSkills = HTMLskills.replace("%data%", bio.skills[e]);
             $("#header").append(formattedSkills);
         }
-        $("#map-div").append(googleMap);
+        $("#map").prepend(googleMap);
 
     }
 }

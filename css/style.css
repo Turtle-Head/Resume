@@ -198,16 +198,16 @@ span {
 
 #map {
   display: block;
-  height: 100%;
+  height: 500px;
   margin: 0 5%;
   padding: 20px;
+  width: 90%;
 }
 
 #map-div {
-  height: 400px;
-  width: 100%;
   padding-bottom: 5%;
 }
+
 
 @media only screen and (min-width: 750px) {
   #skills-h3,
