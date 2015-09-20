@@ -93,10 +93,10 @@ var education = {
         $(".education-entry:last").append(HTMLonlineClasses);
         for (var c=0; c < education.onlineCourses.length; c++) {
             //format stuff
-            var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[c].school);
+            var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[c].school).replace("#", education.onlineCourses[c].url);
             var formattedOCTitle = HTMLschoolLocation.replace("%data%", education.onlineCourses[c].title);
             var formattedOCDate= HTMLschoolDates.replace("%data%", education.onlineCourses[c].date);
-            var formattedOCUrl= HTMLonlineURL.replace("%data%", education.onlineCourses[c].url);
+            var formattedOCUrl= HTMLonlineURL.replace("%data%", education.onlineCourses[c].url).replace("#", education.onlineCourses[c].url);
             //append stuff
             $(".education-entry:last").append(formattedOCTitle);
             $(".education-entry:last").append(formattedOCName);
@@ -141,25 +141,21 @@ var projects = {
             "title": "Portfolio",
             "dates": "2015",
             "description": "Design Mockup of a Portfolio, repurposed to hold my information",
-            "images": "images/thumb 1.png"
+            "images": "images/thumb 1.png",
+            "url": "http://turtle-head.github.io/Portfolio"
         },
         {
             "title": "Resume",
             "dates": "2015",
             "description": "This is the project you are looking at",
-            "images": "images/thumb 2.png"
-        },
-        {
-            "title": "Bugged: Clone of Frogger",
-            "dates": "2015",
-            "description": "A clone of the classic arcade game Frogger, written in Javascript"
-            "images": "images/Bugged.png"
+            "images": "images/thumb 2.png",
+            "url": "http://turtle-head.github.io/Resume"
         }
     ],
     display: function (){
         $("#projects").append(HTMLprojectStart);
         for (var b=0; b < projects.projects.length; b++) {
-            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[b].title);
+            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[b].title).replace("#", projects.projects[b].url);
             var formatterProjectDates = HTMLprojectDates.replace("%data%", projects.projects[b].dates);
             var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[b].description);
             var formattedProjectImages = HTMLprojectImage.replace("%data%", projects.projects[b].images);
