@@ -138,16 +138,22 @@ var work = {
 var projects = {
     "projects": [
         {
-            "title": "Project 1",
+            "title": "Portfolio",
             "dates": "2015",
-            "description": "This does something",
+            "description": "Design Mockup of a Portfolio, repurposed to hold my information",
             "images": "images/thumb 1.png"
         },
         {
-            "title": "Project 2",
+            "title": "Resume",
             "dates": "2015",
-            "description": "This does something else",
+            "description": "This is the project you are looking at",
             "images": "images/thumb 2.png"
+        },
+        {
+            "title": "Bugged: Clone of Frogger",
+            "dates": "2015",
+            "description": "A clone of the classic arcade game Frogger, written in Javascript"
+            "images": "images/Bugged.png"
         }
     ],
     display: function (){
