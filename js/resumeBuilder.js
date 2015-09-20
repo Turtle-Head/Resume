@@ -148,12 +148,6 @@ var projects = {
             "dates": "2015",
             "description": "This is the project you are looking at",
             "images": "images/thumb 2.png"
-        },
-        {
-            "title": "Bugged: Clone of Frogger",
-            "dates": "2015",
-            "description": "A clone of the classic arcade game Frogger, written in Javascript"
-            "images": "images/Bugged.png"
         }
     ],
     display: function (){
