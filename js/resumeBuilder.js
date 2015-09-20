@@ -93,10 +93,10 @@ var education = {
         $(".education-entry:last").append(HTMLonlineClasses);
         for (var c=0; c < education.onlineCourses.length; c++) {
             //format stuff
-            var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[c].school);
+            var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[c].school).replace("#", education.onlineCourses[c].url);
             var formattedOCTitle = HTMLschoolLocation.replace("%data%", education.onlineCourses[c].title);
             var formattedOCDate= HTMLschoolDates.replace("%data%", education.onlineCourses[c].date);
-            var formattedOCUrl= HTMLonlineURL.replace("%data%", education.onlineCourses[c].url);
+            var formattedOCUrl= HTMLonlineURL.replace("%data%", education.onlineCourses[c].url).replace("#", education.onlineCourses[c].url);
             //append stuff
             $(".education-entry:last").append(formattedOCTitle);
             $(".education-entry:last").append(formattedOCName);
