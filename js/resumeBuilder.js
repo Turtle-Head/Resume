@@ -46,7 +46,7 @@ var education = {
         {
         "name": "DeVRY Institute of Technology",
         "location": "Calgary, AB",
-        "degree": "Computer Science",
+        "degree": "Computer Science -Did Not Finish-",
         "major": "Computer Science",
         "dates": "2000"
         },
