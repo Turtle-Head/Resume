@@ -155,7 +155,7 @@ var projects = {
             "dates": "2015",
             "description": "A clone of the classic arcade game Frogger",
             "images": "images/Bugged.png",
-            "url": "htttp://turtle-head.github.io/Bugged"
+            "url": "http://turtle-head.github.io/Bugged/"
     ],
     display: function (){
         $("#projects").append(HTMLprojectStart);
