@@ -141,14 +141,14 @@ var projects = {
             "title": "Portfolio",
             "dates": "2015",
             "description": "Design Mockup of a Portfolio, repurposed to hold my information",
-            "images": "images/thumb 1.png",
+            "images": "images/SSPortfolioTop.jpg",
             "url": "http://turtle-head.github.io/Portfolio"
         },
         {
             "title": "Resume",
             "dates": "2015",
             "description": "This is the project you are looking at",
-            "images": "images/thumb 2.png",
+            "images": "images/SSResumeTop.png",
             "url": "http://turtle-head.github.io/Resume"
         },
         {
