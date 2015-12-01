@@ -10,7 +10,7 @@ var bio = {
         "location" : "Roseisle, MB"
     },
     "welcomeMessage": "Thank you for taking the time to check out my resume.",
-    "skills" : ["CSS","HTML","JS","CCNA"],
+    "skills" : ["CSS","HTML","JS","CCNA","JQuery"],
     "biopic" : "images/jfheadshot.jpg",
     display: function (){
         var formattedName = HTMLheaderName.replace("%data%", bio.name);
@@ -39,7 +39,7 @@ var bio = {
         $("#map").prepend(googleMap);
 
     }
-}
+};
 
 var education = {
     "schools": [
@@ -105,7 +105,7 @@ var education = {
             $(".education-entry:last").append("<br>");
             }
     }
-}
+};
 
 var work = {
     "jobs": [
@@ -133,7 +133,7 @@ var work = {
             $(".work-entry:last").append(formattedWorkDescription);
         }
     }
-}
+};
 
 var projects = {
     "projects": [
@@ -173,7 +173,7 @@ var projects = {
             $(".project-entry:last").append(formattedProjectImages);
         }
     }
-}
+};
 //Functions
 function locationizer(work_obj) {
     var locations = [];
