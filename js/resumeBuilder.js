@@ -1,80 +1,135 @@
-//JSON Objects
-var bio = {
-    "name" : "James Fehr",
-    "role" : "Front End Developer // Consultant // Troubleshooter",
-    "contacts" : {
-        "mobile" : "204-828-3613",
-        "email": "fehr.james@gmail.com",
-        "github" : "Turtle-Head",
-        "twitter" : "@StarkWarrior",
-        "location" : "Roseisle, MB"
-    },
-    "welcomeMessage": "Thank you for taking the time to check out my resume.",
-    "skills" : ["CSS","HTML","JS","CCNA","JQuery"],
-    "biopic" : "images/jfheadshot.jpg",
-    display: function (){
-        var formattedName = HTMLheaderName.replace("%data%", bio.name);
-        var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-        var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-        var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-        var formattedLoc = HTMLlocation.replace("%data%", bio.contacts.location);
-        var formattedGit = HTMLgithub.replace("%data%", bio.contacts.github);
-        var formattedTwit = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-        var formattedPict = HTMLbioPic.replace("%data%", bio.biopic);
-        var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
-        $("#header").prepend(internationalizeButton);
-        $("#header").prepend(formattedRole);
-        $("#header").prepend(formattedName);
+$(function(){
+  var model = {
+    "bio":{
+      "name" : "James Fehr",
+      "role" : "Front End Developer // Consultant // Troubleshooter",
+      "contacts" : {
+          "mobile" : "204-828-3613",
+          "email": "fehr.james@gmail.com",
+          "github" : "Turtle-Head",
+          "twitter" : "@StarkWarrior",
+          "location" : "Roseisle, MB"
+        },
+        "welcomeMessage": "Thank you for taking the time to check out my resume.",
+        "skills" : ["CSS","HTML","JS","CCNA","JQuery"],
+        "biopic" : "images/jfheadshot.jpg"
+      },
+      "education": {
+        "schools": [
+          {
+            "name": "DeVRY Institute of Technology",
+            "location": "Calgary, AB",
+            "degree": "Computer Science -Did Not Finish-",
+            "major": "Computer Science",
+            "dates": "2000"
+          },
+          {
+            "name": "Penticton Sr. Secondary",
+            "location": "Penticton, BC",
+            "degree": "Diploma, CCNA",
+            "major": "English, CS, Networking",
+            "dates": "1996-1999"
+          }
+        ],
+        "onlineCourses": [
+          {
+              "title" : "Front End Nano Degree",
+              "school" : "Udacity",
+              "date" : "2015",
+              "url" : "http://www.udacity.com"
+            },
+            {
+              "title" : "Cisco Certified Network Associate",
+              "school" : "Penticton Sr. Secondary",
+              "date" : "1999",
+              "url" : "http://www.cisco.com/"
+            }
+          ],
+          "jobs": [
+            {
+              "employer": "Self Employed",
+              "title": "Consultant",
+              "location": "Roseisle, MB",
+              "dates": "2008-2015",
+              "description": "Continuing to offer a wide range of computer services including VOIP servers, network setup, Virus, Malware and Rootkit removal as well as custom Web Sites and Computers."
+            }
+          ],
+          "projects": [
+            {
+              "title": "Portfolio",
+              "dates": "2015",
+              "description": "Design Mockup of a Portfolio, repurposed to hold my information",
+              "images": "images/SSPortfolioTop.jpg",
+              "url": "http://turtle-head.github.io/Portfolio"
+            },
+            {
+              "title": "Resume",
+              "dates": "2015",
+              "description": "This is the project you are looking at",
+              "images": "images/SSResumeTop.png",
+              "url": "http://turtle-head.github.io/Resume"
+            },
+            {
+              "title": "Bugged",
+              "dates": "2015",
+              "description": "A clone of the classic arcade game Frogger",
+              "images": "images/Bugged.png",
+              "url": "http://turtle-head.github.io/Bugged/"
+            }
+          ]
+        }
+      };
+      var octopus = {
+        initBio: function(){
+          displayBio(model.bio);
+        },
+        initWork: function(){
 
-        $("#header").append(formattedPict);
-        $("#topContacts").append(formattedMobile, formattedEmail, formattedGit, formattedTwit, formattedLoc);
-        $("#footerContacts").append(formattedMobile, formattedEmail, formattedGit, formattedTwit, formattedLoc);
-        $("#header").append(formattedWelcome);
-        $("#header").append(HTMLskillsStart);
-        for (var e=0; e < bio.skills.length; e++){
+        },
+        initSchool: function(){
+
+        },
+        initProj: function(){
+
+        },
+        init: function(){
+          octopus.initBio();
+          octopus.initWork();
+          octopus.initProj();
+          octopus.initSchool();
+        }
+      };
+      var view = {
+        displayBio: function (obj){
+          var formattedName = HTMLheaderName.replace("%data%", obj.name);
+          var formattedRole = HTMLheaderRole.replace("%data%", obj.role);
+          var formattedEmail = HTMLemail.replace("%data%", obj.contacts.email);
+          var formattedMobile = HTMLmobile.replace("%data%", obj.contacts.mobile);
+          var formattedLoc = HTMLlocation.replace("%data%", obj.contacts.location);
+          var formattedGit = HTMLgithub.replace("%data%", obj.contacts.github);
+          var formattedTwit = HTMLtwitter.replace("%data%", obj.contacts.twitter);
+          var formattedPict = HTMLbioPic.replace("%data%", obj.biopic);
+          var formattedWelcome = HTMLwelcomeMsg.replace("%data%", obj.welcomeMessage);
+
+          $("#header").prepend(internationalizeButton);
+          $("#header").prepend(formattedRole);
+          $("#header").prepend(formattedName);
+
+          $("#header").append(formattedPict);
+          $("#topContacts").append(formattedMobile, formattedEmail, formattedGit, formattedTwit, formattedLoc);
+          $("#footerContacts").append(formattedMobile, formattedEmail, formattedGit, formattedTwit, formattedLoc);
+          $("#header").append(formattedWelcome);
+          $("#header").append(HTMLskillsStart);
+          for (var e=0; e < bio.skills.length; e++){
             var formattedSkills = HTMLskills.replace("%data%", bio.skills[e]);
             $("#header").append(formattedSkills);
-        }
-        $("#map").prepend(googleMap);
-
-    }
-};
-
-var education = {
-    "schools": [
-        {
-        "name": "DeVRY Institute of Technology",
-        "location": "Calgary, AB",
-        "degree": "Computer Science -Did Not Finish-",
-        "major": "Computer Science",
-        "dates": "2000"
+          }
+          $("#map").prepend(googleMap);
         },
-    {
-        "name": "Penticton Sr. Secondary",
-        "location": "Penticton, BC",
-        "degree": "Diploma, CCNA",
-        "major": "English, CS, Networking",
-        "dates": "1996-1999"
-    }
-    ],
-    "onlineCourses": [
-        {
-            "title" : "Front End Nano Degree",
-            "school" : "Udacity",
-            "date" : "2015",
-            "url" : "http://www.udacity.com"
-        },
-        {
-            "title" : "Cisco Certified Network Associate",
-            "school" : "Penticton Sr. Secondary",
-            "date" : "1999",
-            "url" : "http://www.cisco.com/"
-        }
-    ],
-    display: function (){
-        $("#education").append(HTMLschoolStart);
-        for (var d=0; d < education.schools.length; d++) {
+        displaySchool: function (){
+          $("#education").append(HTMLschoolStart);
+          for (var d=0; d < education.schools.length; d++) {
             //format stuff
             var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[d].name);
             var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[d].location);
@@ -89,9 +144,9 @@ var education = {
             $(".education-entry:last").append("<br>");
             $(".education-entry:last").append(formattedSchoolDates);
             $(".education-entry:last").append("<br>");
-            }
-        $(".education-entry:last").append(HTMLonlineClasses);
-        for (var c=0; c < education.onlineCourses.length; c++) {
+          }
+          $(".education-entry:last").append(HTMLonlineClasses);
+          for (var c=0; c < education.onlineCourses.length; c++) {
             //format stuff
             var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[c].school).replace("#", education.onlineCourses[c].url);
             var formattedOCTitle = HTMLschoolLocation.replace("%data%", education.onlineCourses[c].title);
@@ -103,23 +158,11 @@ var education = {
             $(".education-entry:last").append(formattedOCUrl);
             $(".education-entry:last").append(formattedOCDate);
             $(".education-entry:last").append("<br>");
-            }
-    }
-};
-
-var work = {
-    "jobs": [
-        {
-            "employer": "Self Employed",
-            "title": "Consultant",
-            "location": "Roseisle, MB",
-            "dates": "2008-2015",
-            "description": "Continuing to offer a wide range of computer services including VOIP servers, network setup, Virus, Malware and Rootkit removal as well as custom Web Sites and Computers."
-        }
-    ],
-    display: function (){
-        $("#workExperience").append(HTMLworkStart);
-        for (var a=0; a < work.jobs.length; a++){
+          }
+        },
+        displayWork: function (){
+          $("#workExperience").append(HTMLworkStart);
+          for (var a=0; a < work.jobs.length; a++){
             var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[a].employer);
             var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[a].title);
             var formattedWorkLocation = HTMLworkEmployer.replace("%data%", work.jobs[a].location);
@@ -131,37 +174,11 @@ var work = {
             $(".work-entry:last").append(formattedWorkLocation);
             $(".work-entry:last").append(formattedWorkDates);
             $(".work-entry:last").append(formattedWorkDescription);
-        }
-    }
-};
-
-var projects = {
-    "projects": [
-        {
-            "title": "Portfolio",
-            "dates": "2015",
-            "description": "Design Mockup of a Portfolio, repurposed to hold my information",
-            "images": "images/SSPortfolioTop.jpg",
-            "url": "http://turtle-head.github.io/Portfolio"
+          }
         },
-        {
-            "title": "Resume",
-            "dates": "2015",
-            "description": "This is the project you are looking at",
-            "images": "images/SSResumeTop.png",
-            "url": "http://turtle-head.github.io/Resume"
-        },
-        {
-            "title": "Bugged",
-            "dates": "2015",
-            "description": "A clone of the classic arcade game Frogger",
-            "images": "images/Bugged.png",
-            "url": "http://turtle-head.github.io/Bugged/"
-        }
-    ],
-    display: function (){
-        $("#projects").append(HTMLprojectStart);
-        for (var b=0; b < projects.projects.length; b++) {
+        displayProject: function (){
+          $("#projects").append(HTMLprojectStart);
+          for (var b=0; b < projects.projects.length; b++) {
             var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[b].title).replace("#", projects.projects[b].url);
             var formatterProjectDates = HTMLprojectDates.replace("%data%", projects.projects[b].dates);
             var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[b].description);
@@ -171,32 +188,25 @@ var projects = {
             $(".project-entry:last").append(formatterProjectDates);
             $(".project-entry:last").append(formattedProjectDescription);
             $(".project-entry:last").append(formattedProjectImages);
+          }
+        },
+        locationizer: function(work_obj) {
+          var locations = [];
+          for (var job in work_obj.jobs) {
+            locations.push(work_obj.jobs[job].location);
+          }
+          return locations;
+        },
+        inName: function() {
+          var nameSplit = bio.name.split(" ");
+          nameSplit[nameSplit.length-1]=nameSplit[nameSplit.length-1].toUpperCase();
+          var intName=nameSplit[0];
+          for (var x=1; x < nameSplit.length; x++){
+            intName+=" "+nameSplit[x];
+          }
+          console.log(intName);
+          return intName;
         }
-    }
-};
-//Functions
-function locationizer(work_obj) {
-    var locations = [];
-    for (var job in work_obj.jobs) {
-      locations.push(work_obj.jobs[job].location);
-  }
-    return locations;
-}
-
-function inName() {
-    var nameSplit = bio.name.split(" ");
-    nameSplit[nameSplit.length-1]=nameSplit[nameSplit.length-1].toUpperCase();
-    var intName=nameSplit[0];
-    for (var x=1; x < nameSplit.length; x++){
-        intName+=" "+nameSplit[x];
-    }
-    console.log(intName);
-    return intName;
-}
-
-//Function Calls
-bio.display();
-work.display();
-projects.display();
-education.display();
-//console.log();
+    };
+    octopus.init();
+});
