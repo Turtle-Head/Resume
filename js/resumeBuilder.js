@@ -118,13 +118,13 @@ $(function(){
         },
         displaySchool: function (obj){
           $("#education").append(HTMLschoolStart);
-          for (var d=0; d < education.schools.length; d++) {
+          for (var d=0; d < obj.schools.length; d++) {
             //format stuff
-            var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[d].name);
-            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[d].location);
-            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[d].major);
-            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[d].dates);
-            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[d].degree);
+            var formattedSchoolName = HTMLschoolName.replace("%data%", obj.schools[d].name);
+            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", obj.schools[d].location);
+            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", obj.schools[d].major);
+            var formattedSchoolDates = HTMLschoolDates.replace("%data%", obj.schools[d].dates);
+            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", obj.schools[d].degree);
             //append stuff
             $(".education-entry:last").append(formattedSchoolName);
             $(".education-entry:last").append(formattedSchoolDegree);
@@ -137,10 +137,10 @@ $(function(){
           $(".education-entry:last").append(HTMLonlineClasses);
           for (var c=0; c < education.onlineCourses.length; c++) {
             //format stuff
-            var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[c].school).replace("#", education.onlineCourses[c].url);
-            var formattedOCTitle = HTMLschoolLocation.replace("%data%", education.onlineCourses[c].title);
-            var formattedOCDate= HTMLschoolDates.replace("%data%", education.onlineCourses[c].date);
-            var formattedOCUrl= HTMLonlineURL.replace("%data%", education.onlineCourses[c].url).replace("#", education.onlineCourses[c].url);
+            var formattedOCName = HTMLschoolName.replace("%data%", obj.onlineCourses[c].school).replace("#", obj.onlineCourses[c].url);
+            var formattedOCTitle = HTMLschoolLocation.replace("%data%", obj.onlineCourses[c].title);
+            var formattedOCDate= HTMLschoolDates.replace("%data%", obj.onlineCourses[c].date);
+            var formattedOCUrl= HTMLonlineURL.replace("%data%", obj.onlineCourses[c].url).replace("#", obj.onlineCourses[c].url);
             //append stuff
             $(".education-entry:last").append(formattedOCTitle);
             $(".education-entry:last").append(formattedOCName);
