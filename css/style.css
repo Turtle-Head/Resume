@@ -29,7 +29,7 @@ h6 {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
-  align-items: center;
+  align-items:baseline;
 }
 .grid-item {
   width: 33.33%;
