@@ -45,7 +45,7 @@ $(function(){
               "date" : "1999",
               "url" : "http://www.cisco.com/"
             }
-          ],
+          ]},
           "jobs": [
             {
               "employer": "Self Employed",
@@ -78,10 +78,14 @@ $(function(){
               "url": "http://turtle-head.github.io/Bugged/"
             }
           ]
-        }
       };
       var octopus = {
         init: function(){
+          console.log(model.bio);
+          console.log(model.jobs);
+          console.log(model.projects);
+          console.log(projects);
+          console.log(model.education);
           view.displayBio(model.bio);
           view.displayWork(model.jobs);
           view.displayProject(model.projects);
@@ -90,16 +94,17 @@ $(function(){
         }
       };
       var view = {
-        displayBio: function (bio){
-          var formattedName = HTMLheaderName.replace("%data%", bio.name);
-          var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-          var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-          var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-          var formattedLoc = HTMLlocation.replace("%data%", bio.contacts.location);
-          var formattedGit = HTMLgithub.replace("%data%", bio.contacts.github);
-          var formattedTwit = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-          var formattedPict = HTMLbioPic.replace("%data%", bio.biopic);
-          var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+        displayBio: function (obj){
+          console.log(obj);
+          var formattedName = HTMLheaderName.replace("%data%", obj.name);
+          var formattedRole = HTMLheaderRole.replace("%data%", obj.role);
+          var formattedEmail = HTMLemail.replace("%data%", obj.contacts.email);
+          var formattedMobile = HTMLmobile.replace("%data%", obj.contacts.mobile);
+          var formattedLoc = HTMLlocation.replace("%data%", obj.contacts.location);
+          var formattedGit = HTMLgithub.replace("%data%", obj.contacts.github);
+          var formattedTwit = HTMLtwitter.replace("%data%", obj.contacts.twitter);
+          var formattedPict = HTMLbioPic.replace("%data%", obj.biopic);
+          var formattedWelcome = HTMLwelcomeMsg.replace("%data%", obj.welcomeMessage);
 
           $("#header").prepend(internationalizeButton);
           $("#header").prepend(formattedRole);
@@ -110,21 +115,21 @@ $(function(){
           $("#footerContacts").append(formattedMobile, formattedEmail, formattedGit, formattedTwit, formattedLoc);
           $("#header").append(formattedWelcome);
           $("#header").append(HTMLskillsStart);
-          for (var e=0; e < bio.skills.length; e++){
-            var formattedSkills = HTMLskills.replace("%data%", bio.skills[e]);
+          for (var e=0; e < obj.skills.length; e++){
+            var formattedSkills = HTMLskills.replace("%data%", obj.skills[e]);
             $("#header").append(formattedSkills);
           }
           $("#map").prepend(googleMap);
         },
-        displaySchool: function (education){
+        displaySchool: function (obj){
           $("#education").append(HTMLschoolStart);
           for (var d=0; d < obj.schools.length; d++) {
             //format stuff
-            var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[d].name);
-            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[d].location);
-            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[d].major);
-            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[d].dates);
-            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[d].degree);
+            var formattedSchoolName = HTMLschoolName.replace("%data%", obj.schools[d].name);
+            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", obj.schools[d].location);
+            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", obj.schools[d].major);
+            var formattedSchoolDates = HTMLschoolDates.replace("%data%", obj.schools[d].dates);
+            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", obj.schools[d].degree);
             //append stuff
             $(".education-entry:last").append(formattedSchoolName);
             $(".education-entry:last").append(formattedSchoolDegree);
@@ -135,12 +140,12 @@ $(function(){
             $(".education-entry:last").append("<br>");
           }
           $(".education-entry:last").append(HTMLonlineClasses);
-          for (var c=0; c < education.onlineCourses.length; c++) {
+          for (var c=0; c < obj.onlineCourses.length; c++) {
             //format stuff
-            var formattedOCName = HTMLschoolName.replace("%data%", education.onlineCourses[c].school).replace("#", education.onlineCourses[c].url);
-            var formattedOCTitle = HTMLschoolLocation.replace("%data%", education.onlineCourses[c].title);
-            var formattedOCDate= HTMLschoolDates.replace("%data%", education.onlineCourses[c].date);
-            var formattedOCUrl= HTMLonlineURL.replace("%data%", education.onlineCourses[c].url).replace("#", education.onlineCourses[c].url);
+            var formattedOCName = HTMLschoolName.replace("%data%", obj.onlineCourses[c].school).replace("#", obj.onlineCourses[c].url);
+            var formattedOCTitle = HTMLschoolLocation.replace("%data%", obj.onlineCourses[c].title);
+            var formattedOCDate= HTMLschoolDates.replace("%data%", obj.onlineCourses[c].date);
+            var formattedOCUrl= HTMLonlineURL.replace("%data%", obj.onlineCourses[c].url).replace("#", obj.onlineCourses[c].url);
             //append stuff
             $(".education-entry:last").append(formattedOCTitle);
             $(".education-entry:last").append(formattedOCName);
@@ -149,14 +154,15 @@ $(function(){
             $(".education-entry:last").append("<br>");
           }
         },
-        displayWork: function (work){
+        displayWork: function (obj){
+          console.log(obj);
           $("#workExperience").append(HTMLworkStart);
-          for (var a=0; a < work.jobs.length; a++){
-            var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[a].employer);
-            var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[a].title);
-            var formattedWorkLocation = HTMLworkEmployer.replace("%data%", work.jobs[a].location);
-            var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[a].dates);
-            var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[a].description);
+          for (var a=0; a < obj.length; a++){
+            var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", obj[a].employer);
+            var formattedWorkTitle = HTMLworkTitle.replace("%data%", obj[a].title);
+            var formattedWorkLocation = HTMLworkEmployer.replace("%data%", obj[a].location);
+            var formattedWorkDates = HTMLworkDates.replace("%data%", obj[a].dates);
+            var formattedWorkDescription = HTMLworkDescription.replace("%data%", obj[a].description);
 
             $(".work-entry:last").append(formattedWorkEmployer);
             $(".work-entry:last").append(formattedWorkTitle);
@@ -165,13 +171,13 @@ $(function(){
             $(".work-entry:last").append(formattedWorkDescription);
           }
         },
-        displayProject: function (projects){
+        displayProject: function (obj){
           $("#projects").append(HTMLprojectStart);
-          for (var b=0; b < projects.projects.length; b++) {
-            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[b].title).replace("#", projects.projects[b].url);
-            var formatterProjectDates = HTMLprojectDates.replace("%data%", projects.projects[b].dates);
-            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[b].description);
-            var formattedProjectImages = HTMLprojectImage.replace("%data%", projects.projects[b].images);
+          for (var b=0; b < obj.length; b++) {
+            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", obj[b].title).replace("#", obj[b].url);
+            var formatterProjectDates = HTMLprojectDates.replace("%data%", obj[b].dates);
+            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", obj[b].description);
+            var formattedProjectImages = HTMLprojectImage.replace("%data%", obj[b].images);
 
             $(".project-entry:last").append(formattedProjectTitle);
             $(".project-entry:last").append(formatterProjectDates);
@@ -186,8 +192,8 @@ $(function(){
           }
           return locations;
         },
-        inName: function() {
-          var nameSplit = bio.name.split(" ");
+        inName: function(obj) {
+          var nameSplit = obj.name.split(" ");
           nameSplit[nameSplit.length-1]=nameSplit[nameSplit.length-1].toUpperCase();
           var intName=nameSplit[0];
           for (var x=1; x < nameSplit.length; x++){
@@ -195,7 +201,66 @@ $(function(){
           }
           console.log(intName);
           return intName;
+        },
+        locationFinder: function(obj) {
+
+          // initializes an empty array
+          var locations = [];
+
+          // adds the single location property from bio to the locations array
+          locations.push(obj.bio.contacts.location);
+
+          // iterates through school locations and appends each location to
+          // the locations array
+          for (var school in education.schools) {
+            locations.push(obj.education.schools[school].location);
+          }
+
+          // iterates through work locations and appends each location to
+          // the locations array
+          for (var job in work.jobs) {
+            locations.push(obj.work.jobs[job].location);
+          }
+
+          return locations;
+        },
+        createMapMarker: function(placeData) {
+
+          // The next lines save location data from the search result object to local variables
+          var lat = placeData.geometry.location.lat();  // latitude from the place service
+          var lon = placeData.geometry.location.lng();  // longitude from the place service
+          var name = placeData.formatted_address;   // name of the place from the place service
+          var bounds = window.mapBounds;            // current boundaries of the map window
+
+          // marker is an object with additional data about the pin for a single location
+          var marker = new google.maps.Marker({
+            map: map,
+            position: placeData.geometry.location,
+            title: name
+          });
+
+          // infoWindows are the little helper windows that open when you click
+          // or hover over a pin on a map. They usually contain more information
+          // about a location.
+          var infoWindow = new google.maps.InfoWindow({
+            content: name
+          });
+
+          // hmmmm, I wonder what this is about...
+          google.maps.event.addListener(marker, 'click', function() {
+            // your code goes here!
+            infoWindow.open(map,marker);
+          });
+
+          // this is where the pin actually gets added to the map.
+          // bounds.extend() takes in a map location object
+          bounds.extend(new google.maps.LatLng(lat, lon));
+          // fit the map to the new marker
+          map.fitBounds(bounds);
+          // center the map
+          map.setCenter(bounds.getCenter());
         }
+
     };
     octopus.init();
 });
