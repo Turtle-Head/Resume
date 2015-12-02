@@ -237,7 +237,8 @@ $(function(){
           var HTMLprojectTitle = '<a href="#">%data%</a>';
           var HTMLprojectDates = '<div class="date-text">%data%</div>';
           var HTMLprojectDescription = '<p><br>%data%</p>';
-          var HTMLprojectImage = '<img src="%data%" width="10%">';
+          var HTMLprojectImage = '<img src="%data%" width="75%">';
+          var output;
           // Insert Data to formatted HTML and insert them on the page
           $("#projects").append(HTMLprojectStart);
           for (var b=0; b < obj.length; b++) {
@@ -245,11 +246,8 @@ $(function(){
             var formatterProjectDates = HTMLprojectDates.replace("%data%", obj[b].dates);
             var formattedProjectDescription = HTMLprojectDescription.replace("%data%", obj[b].description);
             var formattedProjectImages = HTMLprojectImage.replace("%data%", obj[b].images);
-
-            $(".project-entry:last").append(formattedProjectTitle);
-            $(".project-entry:last").append(formatterProjectDates);
-            $(".project-entry:last").append(formattedProjectDescription);
-            $(".project-entry:last").append(formattedProjectImages);
+            output = '<div class="grid-item">' + formattedProjectTitle + '<br>' + formatterProjectDates + '<br>' + formattedProjectDescription + '<br>' + formattedProjectImages + '</div>';
+            $(".project-entry:last").append(output);
           }
         },
         locationizer: function(work_obj) {
