@@ -19,11 +19,21 @@ h6 {
 }
 
 .education-entry,
-.work-entry,
-.project-entry {
+.work-entry {
   padding: 0 5%;
 }
-
+.project-entry {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
+  align-items: center;
+}
+.grid-item {
+  width: 33.33%;
+}
 h1 {
   font-size: 40px;
   color: #f5a623;
@@ -218,11 +228,11 @@ span {
 
 #inTb {
     background-color: #0000CD;
-    -moz-border-radius: 50px;
-    -webkit-border-radius: 55px;
-    border-radius: 50px;
-    width: 100%;
-    align: center;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 15px;
+    border-radius: 10px;
+    width: 25%;
+    text-align: center;
     color: #fff;
     font-size: 12px;
     text-decoration: none;
