@@ -77,6 +77,20 @@ $(function(){
               "description": "A clone of the classic arcade game Frogger",
               "images": "images/Bugged.png",
               "url": "http://turtle-head.github.io/Bugged/"
+            },
+            {
+              "title": "Unknown Crusade Killboard",
+              "dates": "2015",
+              "description": "A Killboard that displays kills for the online MMO EVE Online",
+              "images": "http://i.gyazo.com/f0b803fdc0df3565dc04b6d593490738.png",
+              "url": "http://turtle-head.github.io/Killboard/"
+            },
+            {
+              "title": "Cat Clicker",
+              "dates": "2015",
+              "description": "Click the cats, the app counts the clicks. If you want to click on other cats, open the admin console to add your own.",
+              "images": "http://i.gyazo.com/2698f87f89f83b0e581445550ba96768.png",
+              "url": "http://turtle-head.github.io/CatClicker/"
             }
           ]
       };
