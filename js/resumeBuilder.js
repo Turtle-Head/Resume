@@ -81,21 +81,38 @@ $(function(){
       };
       var octopus = {
         init: function(){
-          console.log(model.bio);
-          console.log(model.jobs);
-          console.log(model.projects);
-          console.log(projects);
-          console.log(model.education);
           view.displayBio(model.bio);
           view.displayWork(model.jobs);
           view.displayProject(model.projects);
           view.displaySchool(model.education);
-          view.locationizer(model.jobs);
+          //view.locationizer(model);
+        },
+        initInName: function(){
+          $("#inTb").click(function(){
+            view.inName(model.bio.name);
+          });
         }
       };
       var view = {
         displayBio: function (obj){
           console.log(obj);
+          // Formatted HTML strings for use later
+          var HTMLheaderName = '<h1 id="name">%data%</h1>';
+          var HTMLheaderRole = '<span>%data%</span><hr/>';
+          var HTMLmobile = '<li class="flex-item"><span class="orange-text">phone</span><span class="white-text">%data%</span></li>';
+          var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
+          var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
+          var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
+          var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
+          var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
+          var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
+          var HTMLbioPic = '<img src="%data%" class="biopic">';
+          var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
+          var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
+          var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
+          var googleMap = '<div id="map"></div>';
+          var internationalizeButton = '<div id="inTb">Internationalize</div>';
+          // Insert JSON data to the formatted HTML Strings
           var formattedName = HTMLheaderName.replace("%data%", obj.name);
           var formattedRole = HTMLheaderRole.replace("%data%", obj.role);
           var formattedEmail = HTMLemail.replace("%data%", obj.contacts.email);
@@ -105,23 +122,37 @@ $(function(){
           var formattedTwit = HTMLtwitter.replace("%data%", obj.contacts.twitter);
           var formattedPict = HTMLbioPic.replace("%data%", obj.biopic);
           var formattedWelcome = HTMLwelcomeMsg.replace("%data%", obj.welcomeMessage);
-
+          // Insert the formatted HTML Strings to the page
           $("#header").prepend(internationalizeButton);
           $("#header").prepend(formattedRole);
           $("#header").prepend(formattedName);
-
           $("#header").append(formattedPict);
           $("#topContacts").append(formattedMobile, formattedEmail, formattedGit, formattedTwit, formattedLoc);
           $("#footerContacts").append(formattedMobile, formattedEmail, formattedGit, formattedTwit, formattedLoc);
           $("#header").append(formattedWelcome);
           $("#header").append(HTMLskillsStart);
+          // Place Skills beside the Picture
           for (var e=0; e < obj.skills.length; e++){
             var formattedSkills = HTMLskills.replace("%data%", obj.skills[e]);
             $("#header").append(formattedSkills);
           }
           $("#map").prepend(googleMap);
+          octopus.initInName();
         },
         displaySchool: function (obj){
+          // Formatted HTML Strings
+          var HTMLschoolStart = '<div class="education-entry"></div>';
+          var HTMLschoolName = '<a href="#">%data%';
+          var HTMLschoolDegree = ' -- %data%</a>';
+          var HTMLschoolDates = '<div class="date-text">%data%</div>';
+          var HTMLschoolLocation = '<div class="location-text">%data%</div>';
+          var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+          var HTMLonlineClasses = '<h3>Online Classes</h3>';
+          var HTMLonlineTitle = '<a href="#">%data%';
+          var HTMLonlineSchool = ' - %data%</a>';
+          var HTMLonlineDates = '<div class="date-text">%data%</div>';
+          var HTMLonlineURL = '<a href="#">%data%</a>';
+          // Insert Data to the HTML Strings and then Insert them on the page
           $("#education").append(HTMLschoolStart);
           for (var d=0; d < obj.schools.length; d++) {
             //format stuff
@@ -156,6 +187,14 @@ $(function(){
         },
         displayWork: function (obj){
           console.log(obj);
+          // Formatted HTML Strings
+          var HTMLworkStart = '<div class="work-entry"></div>';
+          var HTMLworkEmployer = '<a href="#">%data%';
+          var HTMLworkTitle = ' - %data%</a>';
+          var HTMLworkDates = '<div class="date-text">%data%</div>';
+          var HTMLworkLocation = '<div class="location-text">%data%</div>';
+          var HTMLworkDescription = '<p><br>%data%</p>';
+          // Insert Data to formatted HTML and insert them on the page
           $("#workExperience").append(HTMLworkStart);
           for (var a=0; a < obj.length; a++){
             var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", obj[a].employer);
@@ -172,6 +211,13 @@ $(function(){
           }
         },
         displayProject: function (obj){
+          // Formatted HTML Strings
+          var HTMLprojectStart = '<div class="project-entry"></div>';
+          var HTMLprojectTitle = '<a href="#">%data%</a>';
+          var HTMLprojectDates = '<div class="date-text">%data%</div>';
+          var HTMLprojectDescription = '<p><br>%data%</p>';
+          var HTMLprojectImage = '<img src="%data%" width="10%">';
+          // Insert Data to formatted HTML and insert them on the page
           $("#projects").append(HTMLprojectStart);
           for (var b=0; b < obj.length; b++) {
             var formattedProjectTitle = HTMLprojectTitle.replace("%data%", obj[b].title).replace("#", obj[b].url);
@@ -193,14 +239,14 @@ $(function(){
           return locations;
         },
         inName: function(obj) {
-          var nameSplit = obj.name.split(" ");
+          var nameSplit = obj.split(" ");
           nameSplit[nameSplit.length-1]=nameSplit[nameSplit.length-1].toUpperCase();
           var intName=nameSplit[0];
           for (var x=1; x < nameSplit.length; x++){
             intName+=" "+nameSplit[x];
           }
           console.log(intName);
-          return intName;
+          $('#name').html(intName);
         },
         locationFinder: function(obj) {
 
