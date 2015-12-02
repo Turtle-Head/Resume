@@ -81,23 +81,12 @@ $(function(){
         }
       };
       var octopus = {
-        initBio: function(){
-          displayBio(model.bio);
-        },
-        initWork: function(){
-
-        },
-        initSchool: function(){
-
-        },
-        initProj: function(){
-
-        },
         init: function(){
-          octopus.initBio();
-          octopus.initWork();
-          octopus.initProj();
-          octopus.initSchool();
+          view.displayBio(model.bio);
+          view.displayWork(model.jobs);
+          view.displayProject(model.projects);
+          view.displaySchool(model.education);
+          view.locationizer(model.jobs);
         }
       };
       var view = {
@@ -127,7 +116,7 @@ $(function(){
           }
           $("#map").prepend(googleMap);
         },
-        displaySchool: function (){
+        displaySchool: function (obj){
           $("#education").append(HTMLschoolStart);
           for (var d=0; d < education.schools.length; d++) {
             //format stuff
@@ -160,7 +149,7 @@ $(function(){
             $(".education-entry:last").append("<br>");
           }
         },
-        displayWork: function (){
+        displayWork: function (obj){
           $("#workExperience").append(HTMLworkStart);
           for (var a=0; a < work.jobs.length; a++){
             var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[a].employer);
@@ -176,7 +165,7 @@ $(function(){
             $(".work-entry:last").append(formattedWorkDescription);
           }
         },
-        displayProject: function (){
+        displayProject: function (obj){
           $("#projects").append(HTMLprojectStart);
           for (var b=0; b < projects.projects.length; b++) {
             var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[b].title).replace("#", projects.projects[b].url);
