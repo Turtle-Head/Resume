@@ -3,6 +3,7 @@ $(function(){
   var model = {
     "bio":{
       "name" : "James Fehr",
+      "internationalized" : false,
       "role" : "Front End Developer // Consultant // Troubleshooter",
       "contacts" : {
           "mobile" : "204-828-3613",
@@ -89,7 +90,13 @@ $(function(){
         },
         initInName: function(){
           $("#inTb").click(function(){
-            view.inName(model.bio.name);
+            if(model.bio.internationalized){
+              view.resetName(model.bio.name);
+              model.bio.internationalized = false;
+            } else {
+              view.inName(model.bio.name);
+              model.bio.internationalized = true;
+            }
           });
         }
       };
@@ -247,6 +254,9 @@ $(function(){
           }
           console.log(intName);
           $('#name').html(intName);
+        },
+        resetName: function(obj){
+          $('#name').html(obj);
         },
         locationFinder: function(obj) {
 
